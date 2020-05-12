@@ -71,9 +71,9 @@ namespace WindowsFormsApp3
         private void Button3_Click(object sender, EventArgs e) //search
         {
             sqlCon.Open();
-            SqlCommand cmd = new SqlCommand("select * from Employee where Name=@Name or Position=@Position or Phone=@Phone or Address=@Address", sqlCon);
+            SqlCommand cmd = new SqlCommand("select * from Employee where Id=@Id or Name=@Name or Position=@Position or Phone=@Phone or Address=@Address", sqlCon);
 
-            //cmd.Parameters.AddWithValue("@Id", int.Parse(textBox1.Text));
+            cmd.Parameters.AddWithValue("@Id", textBox1.Text);
             cmd.Parameters.AddWithValue("@Name", textBox2.Text);
             cmd.Parameters.AddWithValue("@Position", textBox3.Text);
             cmd.Parameters.AddWithValue("@Phone", textBox4.Text);
