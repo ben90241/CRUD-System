@@ -147,15 +147,27 @@ namespace WindowsFormsApp3
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
+                    
                     Stream fileStream = sfd.OpenFile();
                     StreamWriter sw = new StreamWriter(fileStream);
                     DataSet ds = new DataSet();
                     ds.Tables.Add(dt);
-                    ds.WriteXml(sw, XmlWriteMode.IgnoreSchema);
+                    ds.WriteXml(sw, XmlWriteMode.WriteSchema);
+                    sw.Close();
+                    
+                    /*
+                    Stream fileStream = sfd.OpenFile();
+                    StreamWriter sw = new StreamWriter(fileStream);
+                    DataSet ds = new DataSet();
+                    ds.Tables.Add(dt);
+                    sw.WriteLine(ds.GetXml());
+                    sw.Close();
+                    */
                 }
 
                 sqlCon.Close();
             }
+            
             if(checkBox2.Checked==true)
             {
                 sfd.FileName = "*.json";
